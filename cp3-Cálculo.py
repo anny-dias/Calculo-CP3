@@ -9,10 +9,6 @@ a = float(input("Digite o valor de a: "))
 b = float(input("Digite o valor de b: "))
 c = float(input("Digite o valor de c: "))
 
-# Calcular o valor do vértice (Xv, Yv)
-xv = -b / (2*a)
-yv = a * xv**2 + b * xv + c
-
 # Calcular o delta
 delta = b**2 - 4*a*c
 
@@ -30,6 +26,10 @@ else:
 soma_raizes = x1 + x2
 produto_raizes = x1 * x2
 
+# Calcular o valor do vértice (Xv, Yv)
+xv = -b / (2*a)
+yv = - math.sqrt(delta) / (4*a)
+
 # Imprimir os resultados
 print("X do vértice:", xv)
 print("Y do vértice:", yv)
@@ -37,25 +37,20 @@ print("Soma das raízes:", soma_raizes)
 print("Produto das raízes:", produto_raizes)
 print(raizes)
 
-# Código para pegar uma lista de valores representando a função de segundo grau e encontrar numericamente todos os valores que podem ser encontrados analiticamente no item 1
+# Código para pegar uma lista de valores representando a função de segundo grau e numericamente encontra todos os valores que voce pode encontrar analiticamente
 
-import math
+def grafico_funcao(a,b,c):
+    i = -100
+    x = []
+    y = []
+    while i < 10:
+        x.append(i)
+        f = a * i ** 2 + b * i + c
+        y.append(f)
+        i += 1
 
-# Função para calcular y dado um valor x
-def calcular_y(a, b, c, x):
-    return a * x**2 + b * x + c
+    print (x)
+    print(y)
 
-# Receber a lista de valores
-valores = input("Digite a lista de valores separados por espaço: ").split()
-valores = [float(valor) for valor in valores]
-
-# Calcular os valores que podem ser encontrados analiticamente
-resultados = []
-for x in valores:
-    y = calcular_y(a, b, c, x)
-    resultados.append((x, y))
-
-# Imprimir os resultados
-print("Valores encontrados analiticamente:")
-for x, y in resultados:
-    print(f"x = {x}, y = {y}")
+print("Gráfico da função:") 
+grafico_funcao(a, b, c)
